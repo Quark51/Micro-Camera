@@ -1,0 +1,6 @@
+{
+  "name": "Microscope Optical Ray & Sensor Simulator",
+  "description": "Interactive optical calculator and ray simulation for microscope objective and tube lens imaging systems, computing field of view, magnification, vignetting, and sensor coverage.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
