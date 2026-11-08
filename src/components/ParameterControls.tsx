@@ -121,11 +121,11 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
   return (
     <div className="space-y-4">
       {/* 1. OBJECTIVE LENS SPECIFICATIONS */}
-      <section className="bg-slate-900 border border-slate-800 rounded-xl p-4">
-        <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+      <section className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-xs">
+        <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
           <div className="flex items-center gap-2">
-            <CircleDot className="w-4 h-4 text-cyan-400" />
-            <h3 className="text-sm font-semibold text-slate-100">
+            <CircleDot className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+            <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-100">
               Microscope Objective Lens
             </h3>
           </div>
@@ -133,8 +133,8 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
             onClick={() => setAutoSyncFocalLength(!autoSyncFocalLength)}
             className={`text-[11px] px-2 py-0.5 rounded border transition-colors ${
               autoSyncFocalLength
-                ? 'bg-cyan-950/60 border-cyan-800 text-cyan-300'
-                : 'bg-slate-800 border-slate-700 text-slate-400'
+                ? 'bg-cyan-50 dark:bg-cyan-950/60 border-cyan-200 dark:border-cyan-800 text-cyan-700 dark:text-cyan-300'
+                : 'bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400'
             }`}
             title="Auto-calculate focal length f_obj = f_TL_design / M_nom"
           >
@@ -145,7 +145,7 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-3">
           {/* Nominal Magnification */}
           <div>
-            <label className="block text-[11px] font-medium text-slate-400 mb-1">
+            <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
               Nominal Magnification
             </label>
             <div className="relative">
@@ -156,9 +156,9 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
                 step="0.5"
                 value={objective.nominalMagnification}
                 onChange={(e) => handleMagChange(Number(e.target.value))}
-                className="w-full bg-slate-950 border border-slate-700 focus:border-cyan-400 rounded-lg px-2.5 py-1.5 text-xs text-slate-100 font-mono focus:outline-none"
+                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 focus:border-cyan-500 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 dark:text-slate-100 font-mono focus:outline-none"
               />
-              <span className="absolute right-2.5 top-1.5 text-xs text-slate-500 font-mono">
+              <span className="absolute right-2.5 top-1.5 text-xs text-slate-400 dark:text-slate-500 font-mono">
                 ×
               </span>
             </div>
@@ -166,7 +166,7 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
 
           {/* Numerical Aperture (NA) */}
           <div>
-            <label className="block text-[11px] font-medium text-slate-400 mb-1">
+            <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
               Numerical Aperture (NA)
             </label>
             <input
@@ -176,13 +176,13 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
               step="0.05"
               value={objective.numericalAperture}
               onChange={(e) => onUpdateObjective({ numericalAperture: Number(e.target.value) })}
-              className="w-full bg-slate-950 border border-slate-700 focus:border-cyan-400 rounded-lg px-2.5 py-1.5 text-xs text-slate-100 font-mono focus:outline-none"
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 focus:border-cyan-500 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 dark:text-slate-100 font-mono focus:outline-none"
             />
           </div>
 
           {/* Objective Focal Length */}
           <div>
-            <label className="block text-[11px] font-medium text-slate-400 mb-1">
+            <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
               Focal Length (f_obj)
             </label>
             <div className="relative">
@@ -193,9 +193,9 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
                 step="0.1"
                 value={objective.focalLength}
                 onChange={(e) => handleFocalLengthChange(Number(e.target.value))}
-                className="w-full bg-slate-950 border border-slate-700 focus:border-cyan-400 rounded-lg px-2.5 py-1.5 text-xs text-slate-100 font-mono focus:outline-none"
+                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 focus:border-cyan-500 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 dark:text-slate-100 font-mono focus:outline-none"
               />
-              <span className="absolute right-2.5 top-1.5 text-xs text-slate-500 font-mono">
+              <span className="absolute right-2.5 top-1.5 text-xs text-slate-400 dark:text-slate-500 font-mono">
                 mm
               </span>
             </div>
@@ -203,13 +203,13 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
 
           {/* Reference Standard */}
           <div>
-            <label className="block text-[11px] font-medium text-slate-400 mb-1">
+            <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
               Design Standard
             </label>
             <select
               value={objective.referenceStandard}
               onChange={(e) => handleReferenceChange(e.target.value as ObjectiveSpec['referenceStandard'])}
-              className="w-full bg-slate-950 border border-slate-700 focus:border-cyan-400 rounded-lg px-2 py-1.5 text-xs text-slate-100 focus:outline-none"
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 focus:border-cyan-500 rounded-lg px-2 py-1.5 text-xs text-slate-900 dark:text-slate-100 focus:outline-none"
             >
               <option value="nikon">Nikon (f_TL = 200 mm)</option>
               <option value="olympus">Olympus (f_TL = 180 mm)</option>
@@ -222,13 +222,13 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
 
           {/* Immersion Medium */}
           <div>
-            <label className="block text-[11px] font-medium text-slate-400 mb-1">
+            <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
               Immersion Medium
             </label>
             <select
               value={objective.immersion}
               onChange={(e) => onUpdateObjective({ immersion: e.target.value as ImmersionMedium })}
-              className="w-full bg-slate-950 border border-slate-700 focus:border-cyan-400 rounded-lg px-2 py-1.5 text-xs text-slate-100 focus:outline-none"
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 focus:border-cyan-500 rounded-lg px-2 py-1.5 text-xs text-slate-900 dark:text-slate-100 focus:outline-none"
             >
               <option value="air">Air (n = 1.000)</option>
               <option value="water">Water (n = 1.333)</option>
@@ -239,7 +239,7 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
 
           {/* Working Distance */}
           <div>
-            <label className="block text-[11px] font-medium text-slate-400 mb-1">
+            <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
               Working Distance (WD)
             </label>
             <div className="relative">
@@ -250,9 +250,9 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
                 step="0.1"
                 value={objective.workingDistance}
                 onChange={(e) => onUpdateObjective({ workingDistance: Number(e.target.value) })}
-                className="w-full bg-slate-950 border border-slate-700 focus:border-cyan-400 rounded-lg px-2.5 py-1.5 text-xs text-slate-100 font-mono focus:outline-none"
+                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 focus:border-cyan-500 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 dark:text-slate-100 font-mono focus:outline-none"
               />
-              <span className="absolute right-2.5 top-1.5 text-xs text-slate-500 font-mono">
+              <span className="absolute right-2.5 top-1.5 text-xs text-slate-400 dark:text-slate-500 font-mono">
                 mm
               </span>
             </div>
@@ -260,8 +260,8 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
         </div>
 
         {/* Quick Quick-Select Standard Objectives */}
-        <div className="flex flex-wrap items-center gap-1.5 mt-3 pt-2.5 border-t border-slate-800/80 text-[11px] text-slate-400">
-          <span className="text-slate-500 mr-1">Quick Select:</span>
+        <div className="flex flex-wrap items-center gap-1.5 mt-3 pt-2.5 border-t border-slate-200 dark:border-slate-800/80 text-[11px] text-slate-500 dark:text-slate-400">
+          <span className="text-slate-400 dark:text-slate-500 mr-1">Quick Select:</span>
           {[
             { label: '4x / 0.13', mag: 4, na: 0.13, wd: 17.0 },
             { label: '10x / 0.30', mag: 10, na: 0.3, wd: 16.0 },
@@ -280,7 +280,7 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
                   ...(item.immersion ? { immersion: item.immersion } : {}),
                 });
               }}
-              className="px-2 py-0.5 bg-slate-800/80 hover:bg-slate-700 text-slate-300 rounded font-mono transition-colors"
+              className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded font-mono border border-slate-200 dark:border-transparent transition-colors"
             >
               {item.label}
             </button>
@@ -289,18 +289,18 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
       </section>
 
       {/* 2. TUBE LENS & DISTANCES */}
-      <section className="bg-slate-900 border border-slate-800 rounded-xl p-4">
-        <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+      <section className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-xs">
+        <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
           <div className="flex items-center gap-2">
-            <Sliders className="w-4 h-4 text-indigo-400" />
-            <h3 className="text-sm font-semibold text-slate-100">
+            <Sliders className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+            <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-100">
               Tube Lens & Distance Parameters
             </h3>
           </div>
           <select
             value={tubeLens.id}
             onChange={(e) => handleTubeLensPresetChange(e.target.value)}
-            className="bg-slate-950 border border-slate-700 text-indigo-300 rounded-lg px-2 py-1 text-xs focus:outline-none"
+            className="bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-indigo-700 dark:text-indigo-300 rounded-lg px-2 py-1 text-xs focus:outline-none"
           >
             {STANDARD_TUBE_LENSES.map((t) => (
               <option key={t.id} value={t.id}>
@@ -313,7 +313,7 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3">
           {/* Tube Lens Focal Length */}
           <div>
-            <label className="block text-[11px] font-medium text-slate-400 mb-1">
+            <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
               Tube Lens Focal (f_TL)
             </label>
             <div className="relative">
@@ -324,9 +324,9 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
                 step="1"
                 value={tubeLens.focalLength}
                 onChange={(e) => onUpdateTubeLens({ focalLength: Number(e.target.value) })}
-                className="w-full bg-slate-950 border border-slate-700 focus:border-indigo-400 rounded-lg px-2.5 py-1.5 text-xs text-slate-100 font-mono focus:outline-none"
+                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 focus:border-indigo-500 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 dark:text-slate-100 font-mono focus:outline-none"
               />
-              <span className="absolute right-2.5 top-1.5 text-xs text-slate-500 font-mono">
+              <span className="absolute right-2.5 top-1.5 text-xs text-slate-400 dark:text-slate-500 font-mono">
                 mm
               </span>
             </div>
@@ -334,7 +334,7 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
 
           {/* Tube Lens Clear Aperture */}
           <div>
-            <label className="block text-[11px] font-medium text-slate-400 mb-1">
+            <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
               Clear Aperture (Ø_TL)
             </label>
             <div className="relative">
@@ -345,9 +345,9 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
                 step="1"
                 value={tubeLens.clearAperture}
                 onChange={(e) => onUpdateTubeLens({ clearAperture: Number(e.target.value) })}
-                className="w-full bg-slate-950 border border-slate-700 focus:border-indigo-400 rounded-lg px-2.5 py-1.5 text-xs text-slate-100 font-mono focus:outline-none"
+                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 focus:border-indigo-500 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 dark:text-slate-100 font-mono focus:outline-none"
               />
-              <span className="absolute right-2.5 top-1.5 text-xs text-slate-500 font-mono">
+              <span className="absolute right-2.5 top-1.5 text-xs text-slate-400 dark:text-slate-500 font-mono">
                 mm
               </span>
             </div>
@@ -355,7 +355,7 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
 
           {/* Infinity Space Distance */}
           <div>
-            <label className="block text-[11px] font-medium text-slate-400 mb-1">
+            <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
               Infinity Space (L_inf)
             </label>
             <div className="relative">
@@ -366,11 +366,13 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
                 step="5"
                 value={distances.infinitySpace}
                 onChange={(e) => onUpdateDistances({ infinitySpace: Number(e.target.value) })}
-                className={`w-full bg-slate-950 border rounded-lg px-2.5 py-1.5 text-xs font-mono focus:outline-none ${
-                  results.isVignetted ? 'border-rose-500 text-rose-300' : 'border-slate-700 text-slate-100 focus:border-indigo-400'
+                className={`w-full bg-slate-50 dark:bg-slate-950 border rounded-lg px-2.5 py-1.5 text-xs font-mono focus:outline-none ${
+                  results.isVignetted
+                    ? 'border-rose-400 dark:border-rose-500 text-rose-700 dark:text-rose-300'
+                    : 'border-slate-300 dark:border-slate-700 text-slate-900 dark:text-slate-100 focus:border-indigo-500'
                 }`}
               />
-              <span className="absolute right-2.5 top-1.5 text-xs text-slate-500 font-mono">
+              <span className="absolute right-2.5 top-1.5 text-xs text-slate-400 dark:text-slate-500 font-mono">
                 mm
               </span>
             </div>
@@ -378,7 +380,7 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
 
           {/* Tube Lens to Sensor Distance */}
           <div>
-            <label className="block text-[11px] font-medium text-slate-400 mb-1">
+            <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
               TL to Sensor Distance
             </label>
             <div className="relative">
@@ -389,9 +391,9 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
                 step="1"
                 value={distances.tubeLensToSensor}
                 onChange={(e) => onUpdateDistances({ tubeLensToSensor: Number(e.target.value) })}
-                className="w-full bg-slate-950 border border-slate-700 focus:border-indigo-400 rounded-lg px-2.5 py-1.5 text-xs text-slate-100 font-mono focus:outline-none"
+                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 focus:border-indigo-500 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 dark:text-slate-100 font-mono focus:outline-none"
               />
-              <span className="absolute right-2.5 top-1.5 text-xs text-slate-500 font-mono">
+              <span className="absolute right-2.5 top-1.5 text-xs text-slate-400 dark:text-slate-500 font-mono">
                 mm
               </span>
             </div>
@@ -400,18 +402,18 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
       </section>
 
       {/* 3. CAMERA SENSOR SPECIFICATIONS */}
-      <section className="bg-slate-900 border border-slate-800 rounded-xl p-4">
-        <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+      <section className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-xs">
+        <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
           <div className="flex items-center gap-2">
-            <Camera className="w-4 h-4 text-emerald-400" />
-            <h3 className="text-sm font-semibold text-slate-100">
+            <Camera className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+            <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-100">
               Camera Sensor Specifications
             </h3>
           </div>
           <select
             value={sensor.id}
             onChange={(e) => handleSensorPresetChange(e.target.value)}
-            className="bg-slate-950 border border-slate-700 text-emerald-300 rounded-lg px-2 py-1 text-xs focus:outline-none"
+            className="bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 text-emerald-700 dark:text-emerald-300 rounded-lg px-2 py-1 text-xs focus:outline-none"
           >
             {STANDARD_SENSORS.map((s) => (
               <option key={s.id} value={s.id}>
@@ -424,7 +426,7 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3">
           {/* Sensor Width */}
           <div>
-            <label className="block text-[11px] font-medium text-slate-400 mb-1">
+            <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
               Sensor Width (W_s)
             </label>
             <div className="relative">
@@ -435,9 +437,9 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
                 step="0.1"
                 value={sensor.width}
                 onChange={(e) => onUpdateSensor({ width: Number(e.target.value) })}
-                className="w-full bg-slate-950 border border-slate-700 focus:border-emerald-400 rounded-lg px-2.5 py-1.5 text-xs text-slate-100 font-mono focus:outline-none"
+                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 focus:border-emerald-500 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 dark:text-slate-100 font-mono focus:outline-none"
               />
-              <span className="absolute right-2.5 top-1.5 text-xs text-slate-500 font-mono">
+              <span className="absolute right-2.5 top-1.5 text-xs text-slate-400 dark:text-slate-500 font-mono">
                 mm
               </span>
             </div>
@@ -445,7 +447,7 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
 
           {/* Sensor Height */}
           <div>
-            <label className="block text-[11px] font-medium text-slate-400 mb-1">
+            <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
               Sensor Height (H_s)
             </label>
             <div className="relative">
@@ -456,9 +458,9 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
                 step="0.1"
                 value={sensor.height}
                 onChange={(e) => onUpdateSensor({ height: Number(e.target.value) })}
-                className="w-full bg-slate-950 border border-slate-700 focus:border-emerald-400 rounded-lg px-2.5 py-1.5 text-xs text-slate-100 font-mono focus:outline-none"
+                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 focus:border-emerald-500 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 dark:text-slate-100 font-mono focus:outline-none"
               />
-              <span className="absolute right-2.5 top-1.5 text-xs text-slate-500 font-mono">
+              <span className="absolute right-2.5 top-1.5 text-xs text-slate-400 dark:text-slate-500 font-mono">
                 mm
               </span>
             </div>
@@ -466,7 +468,7 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
 
           {/* Sensor Pixel Size */}
           <div>
-            <label className="block text-[11px] font-medium text-slate-400 mb-1">
+            <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
               Pixel Pitch (e)
             </label>
             <div className="relative">
@@ -477,9 +479,9 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
                 step="0.05"
                 value={sensor.pixelSize}
                 onChange={(e) => onUpdateSensor({ pixelSize: Number(e.target.value) })}
-                className="w-full bg-slate-950 border border-slate-700 focus:border-emerald-400 rounded-lg px-2.5 py-1.5 text-xs text-slate-100 font-mono focus:outline-none"
+                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 focus:border-emerald-500 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 dark:text-slate-100 font-mono focus:outline-none"
               />
-              <span className="absolute right-2.5 top-1.5 text-xs text-slate-500 font-mono">
+              <span className="absolute right-2.5 top-1.5 text-xs text-slate-400 dark:text-slate-500 font-mono">
                 µm
               </span>
             </div>
@@ -487,10 +489,10 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
 
           {/* Diagonal Readout */}
           <div>
-            <label className="block text-[11px] font-medium text-slate-400 mb-1">
+            <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
               Sensor Diagonal
             </label>
-            <div className="w-full bg-slate-950/60 border border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-300 font-mono">
+            <div className="w-full bg-slate-100 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 rounded-lg px-2.5 py-1.5 text-xs text-slate-800 dark:text-slate-300 font-mono">
               {results.sensorDiagonalMm} mm
             </div>
           </div>
@@ -498,15 +500,15 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
       </section>
 
       {/* 4. OBJECT / SPECIMEN SIZE & WAVELENGTH */}
-      <section className="bg-slate-900 border border-slate-800 rounded-xl p-4">
-        <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+      <section className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 shadow-xs">
+        <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800">
           <div className="flex items-center gap-2">
-            <Layers className="w-4 h-4 text-amber-400" />
-            <h3 className="text-sm font-semibold text-slate-100">
+            <Layers className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+            <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-100">
               Object Size & Light Source
             </h3>
           </div>
-          <span className="text-[11px] text-slate-400 font-mono">
+          <span className="text-[11px] text-slate-500 dark:text-slate-400 font-mono">
             Projected: {results.projectedWidthMm} × {results.projectedHeightMm} mm
           </span>
         </div>
@@ -514,7 +516,7 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3">
           {/* Object Width */}
           <div>
-            <label className="block text-[11px] font-medium text-slate-400 mb-1">
+            <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
               Object Width
             </label>
             <div className="relative">
@@ -525,9 +527,9 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
                 step="10"
                 value={object.width}
                 onChange={(e) => onUpdateObject({ width: Number(e.target.value) })}
-                className="w-full bg-slate-950 border border-slate-700 focus:border-amber-400 rounded-lg px-2.5 py-1.5 text-xs text-slate-100 font-mono focus:outline-none"
+                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 focus:border-amber-500 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 dark:text-slate-100 font-mono focus:outline-none"
               />
-              <span className="absolute right-2.5 top-1.5 text-xs text-slate-500 font-mono">
+              <span className="absolute right-2.5 top-1.5 text-xs text-slate-400 dark:text-slate-500 font-mono">
                 µm
               </span>
             </div>
@@ -535,7 +537,7 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
 
           {/* Object Height */}
           <div>
-            <label className="block text-[11px] font-medium text-slate-400 mb-1">
+            <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
               Object Height
             </label>
             <div className="relative">
@@ -546,9 +548,9 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
                 step="10"
                 value={object.height}
                 onChange={(e) => onUpdateObject({ height: Number(e.target.value) })}
-                className="w-full bg-slate-950 border border-slate-700 focus:border-amber-400 rounded-lg px-2.5 py-1.5 text-xs text-slate-100 font-mono focus:outline-none"
+                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 focus:border-amber-500 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 dark:text-slate-100 font-mono focus:outline-none"
               />
-              <span className="absolute right-2.5 top-1.5 text-xs text-slate-500 font-mono">
+              <span className="absolute right-2.5 top-1.5 text-xs text-slate-400 dark:text-slate-500 font-mono">
                 µm
               </span>
             </div>
@@ -556,7 +558,7 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
 
           {/* Wavelength */}
           <div>
-            <label className="block text-[11px] font-medium text-slate-400 mb-1">
+            <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
               Wavelength (λ)
             </label>
             <div className="relative">
@@ -567,9 +569,9 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
                 step="10"
                 value={distances.wavelength}
                 onChange={(e) => onUpdateDistances({ wavelength: Number(e.target.value) })}
-                className="w-full bg-slate-950 border border-slate-700 focus:border-amber-400 rounded-lg px-2.5 py-1.5 text-xs text-slate-100 font-mono focus:outline-none"
+                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 focus:border-amber-500 rounded-lg px-2.5 py-1.5 text-xs text-slate-900 dark:text-slate-100 font-mono focus:outline-none"
               />
-              <span className="absolute right-2.5 top-1.5 text-xs text-slate-500 font-mono">
+              <span className="absolute right-2.5 top-1.5 text-xs text-slate-400 dark:text-slate-500 font-mono">
                 nm
               </span>
             </div>
@@ -577,13 +579,13 @@ export const ParameterControls: React.FC<ParameterControlsProps> = ({
 
           {/* Specimen Presets */}
           <div>
-            <label className="block text-[11px] font-medium text-slate-400 mb-1">
+            <label className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
               Object Type
             </label>
             <select
               value={object.type}
               onChange={(e) => onUpdateObject({ type: e.target.value as ObjectSpec['type'] })}
-              className="w-full bg-slate-950 border border-slate-700 focus:border-amber-400 rounded-lg px-2 py-1.5 text-xs text-slate-100 focus:outline-none"
+              className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 focus:border-amber-500 rounded-lg px-2 py-1.5 text-xs text-slate-900 dark:text-slate-100 focus:outline-none"
             >
               <option value="usaf">USAF 1951 Target</option>
               <option value="cell">Biological Cell</option>
